@@ -2,10 +2,8 @@ package com.example.samojlov_av_homework_module_12_number_10
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -19,7 +17,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.samojlov_av_homework_module_12_number_10.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
-import java.io.IOException
 import kotlin.reflect.javaType
 import kotlin.reflect.typeOf
 
@@ -40,8 +37,8 @@ class MainActivity : AppCompatActivity() {
     private val GALLERY_REQUEST = 25
 
     //    private var photo: Uri? = null
-    private var photo: Bitmap? = null
-    private lateinit var currentViewModel: CurrentViewModel
+    private var photo: Uri? = null
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         yearMainEditTextET = binding.yearMainEditTextET
         saveButtonBT = binding.saveButtonBT
 
-        currentViewModel = ViewModelProvider(this)[CurrentViewModel::class.java]
+        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         photoCircleImageViewMainCIV.setOnClickListener {
             val photoPickerIntent = Intent(Intent.ACTION_PICK)
@@ -86,15 +83,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveCurrentData() {
-        currentViewModel.name = nameEditTextMainET.text.toString()
-        currentViewModel.surname = surnameEditTextMainET.text.toString()
-        currentViewModel.day = dayMainEditTextET.text.toString()
-        currentViewModel.month = monthMainEditTextET.text.toString()
-        currentViewModel.year = yearMainEditTextET.text.toString()
+        mainViewModel.name = nameEditTextMainET.text.toString()
+        mainViewModel.surname = surnameEditTextMainET.text.toString()
+        mainViewModel.day = dayMainEditTextET.text.toString()
+        mainViewModel.month = monthMainEditTextET.text.toString()
+        mainViewModel.year = yearMainEditTextET.text.toString()
 
-        currentViewModel.currentPhoto.observe(this) {
+        mainViewModel.currentPhoto.observe(this) {
             photo = it
-            photoCircleImageViewMainCIV.setImageBitmap(it)
+            photoCircleImageViewMainCIV.setImageURI(it)
         }
     }
 
@@ -103,12 +100,12 @@ class MainActivity : AppCompatActivity() {
         saveCurrentData()
 
         val choicePerson = ChoicePerson()
-        val name = currentViewModel.name
-        val surname = currentViewModel.surname
-        val day = currentViewModel.day
-        val month = currentViewModel.month
-        val year = currentViewModel.year
-        val image = currentViewModel.photo
+        val name = mainViewModel.name
+        val surname = mainViewModel.surname
+        val day = mainViewModel.day
+        val month = mainViewModel.month
+        val year = mainViewModel.year
+        val image = mainViewModel.photo
 
         val choice = choicePerson.choice(this, name, surname, day, month, year)
 
@@ -120,7 +117,7 @@ class MainActivity : AppCompatActivity() {
             person.day = day.toInt()
             person.month = month.toInt()
             person.year = year.toInt()
-            person.image = image
+            person.image = image.toString()
 
             val type = typeOf<Person>().javaType
             val gson = Gson().toJson(person, type)
@@ -129,6 +126,7 @@ class MainActivity : AppCompatActivity() {
 
 
             val intent = Intent(this, SecondActivity::class.java)
+
             intent.putExtra("person", gson)
             startActivity(intent)
             finish()
@@ -162,16 +160,10 @@ class MainActivity : AppCompatActivity() {
         photoCircleImageViewMainCIV = binding.photoCircleImageViewMainCIV
         when (requestCode) {
             GALLERY_REQUEST -> if (resultCode == RESULT_OK) {
-                val selectedImage: Uri? = data?.data
-                try {
-                    photo = MediaStore.Images.Media.getBitmap(contentResolver, selectedImage)
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-//                photo = data?.data
-                photoCircleImageViewMainCIV.setImageBitmap(photo)
-                currentViewModel.currentPhoto.value =
-                    (photo.also { currentViewModel.photo = it })
+                photo = data?.data
+                photoCircleImageViewMainCIV.setImageURI(photo)
+                mainViewModel.currentPhoto.value =
+                    (photo.also { mainViewModel.photo = it })
             }
         }
     }

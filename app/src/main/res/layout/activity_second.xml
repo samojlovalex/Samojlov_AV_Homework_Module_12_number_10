@@ -68,7 +68,7 @@
                 android:textStyle="bold"
                 android:hint="@string/nameAndSurnameTextVieWSecondTW_Hint"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textSiZeMainTV_Name_Surname"></TextView>
+                android:textSize="@dimen/textSizeMainTV_Name_Surname"></TextView>
             <TextView
                 android:id="@+id/birthdayTextVieWSecondTW"
                 android:layout_width="match_parent"
@@ -76,7 +76,7 @@
                 android:gravity="center"
                 android:hint="@string/birthdayTextVieWSecondTW_Hint"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textSiZeMainYearOfBirthEditText"></TextView>
+                android:textSize="@dimen/textSizeMainYearOfBirthEditText"></TextView>
 
         </LinearLayout>
     <LinearLayout
@@ -93,7 +93,7 @@
             android:textStyle="bold"
             android:hint="@string/daysBeforeTheBirthdayTextVieWSecondTW_Hint"
             android:textColor="@color/Blue"
-            android:textSize="@dimen/textSiZeMainTV_Name_Surname"></TextView>
+            android:textSize="@dimen/textSizeDaysBeforeTheBirthdayText"></TextView>
 
     </LinearLayout>
 

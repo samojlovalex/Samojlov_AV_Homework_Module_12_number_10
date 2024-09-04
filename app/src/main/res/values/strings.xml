@@ -30,7 +30,11 @@
     <string name="birthdayTextVieWSecondTW_Hint">Дата рождения</string>
     <string name="daysBeforeTheBirthdayTextVieWSecondTW_Hint">Дней до дня рождения</string>
     <string name="nameAndSurnamePrint_Second">%1$s\n%2$s</string>
-    <string name="birthdayPrint_Second">Дата рождения:\n%1$s года</string>
-    <string name="daysBeforeTheBirthday">До дня рождения осталось дней:\n%1$s !!!</string>
+    <string name="birthdayPrint_Second">Возраст:\n%1$s</string>
+    <string name="daysBeforeTheBirthday">До дня рождения осталось:\n%1$s !!!</string>
     <string name="titleToolbarsecond" />
+    <string name="periodDay">%1$s дн.</string>
+    <string name="periodMonth">%1$s мес.</string>
+    <string name="periodYear">%1$s г.</string>
+    <string name="ageYear">%1$s л.</string>
 </resources>

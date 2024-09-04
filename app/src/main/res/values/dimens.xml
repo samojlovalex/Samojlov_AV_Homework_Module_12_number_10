@@ -6,8 +6,9 @@
     <dimen name="circleImageViewRadiusMainActivity">250dp</dimen>
     <dimen name="textMarginTop">8sp</dimen>
 
-    <dimen name="textSiZeMainTV_Name_Surname">30sp</dimen>
-    <dimen name="textSiZeMainYearOfBirth">20sp</dimen>
-    <dimen name="textSiZeMainYearOfBirthEditText">25sp</dimen>
-    <dimen name="textSiZeMainButtonText">40sp</dimen>
+    <dimen name="textSizeMainTV_Name_Surname">30sp</dimen>
+    <dimen name="textSizeMainYearOfBirth">20sp</dimen>
+    <dimen name="textSizeMainYearOfBirthEditText">20sp</dimen>
+    <dimen name="textSizeMainButtonText">40sp</dimen>
+    <dimen name="textSizeDaysBeforeTheBirthdayText">20sp</dimen>
 </resources>

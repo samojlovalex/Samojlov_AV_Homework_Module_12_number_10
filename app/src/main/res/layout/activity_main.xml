@@ -49,7 +49,7 @@
                 android:gravity="center"
                 android:hint="@string/nameEditTextMainTV_Hint"
                 android:textColor="@color/Blue"
-                android:textSize="@dimen/textSiZeMainTV_Name_Surname"></EditText>
+                android:textSize="@dimen/textSizeMainTV_Name_Surname"></EditText>
 
             <EditText
                 android:id="@+id/surnameEditTextMainET"
@@ -59,7 +59,7 @@
                 android:gravity="center"
                 android:hint="@string/surnameEditTextMainTV_Hint"
                 android:textColor="@color/Blue"
-                android:textSize="@dimen/textSiZeMainTV_Name_Surname"></EditText>
+                android:textSize="@dimen/textSizeMainTV_Name_Surname"></EditText>
 
         </LinearLayout>
 
@@ -76,7 +76,7 @@
                 android:gravity="center"
                 android:text="@string/yearOfBirthPhraseTextViewTV"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textSiZeMainYearOfBirth"
+                android:textSize="@dimen/textSizeMainYearOfBirth"
                 android:textStyle="bold"></TextView>
 
             <LinearLayout
@@ -95,7 +95,7 @@
                     android:hint="@string/dayMainEditTextET_Hint"
                     android:inputType="number"
                     android:textColor="@color/Blue"
-                    android:textSize="@dimen/textSiZeMainYearOfBirthEditText"></EditText>
+                    android:textSize="@dimen/textSizeMainYearOfBirthEditText"></EditText>
 
                 <EditText
                     android:id="@+id/monthMainEditTextET"
@@ -106,7 +106,7 @@
                     android:hint="@string/monthMainEditTextET_Hint"
                     android:inputType="number"
                     android:textColor="@color/Blue"
-                    android:textSize="@dimen/textSiZeMainYearOfBirthEditText"></EditText>
+                    android:textSize="@dimen/textSizeMainYearOfBirthEditText"></EditText>
 
                 <EditText
                     android:id="@+id/yearMainEditTextET"
@@ -117,7 +117,7 @@
                     android:hint="@string/yearMainEditTextET_Hint"
                     android:inputType="number"
                     android:textColor="@color/Blue"
-                    android:textSize="@dimen/textSiZeMainYearOfBirthEditText"></EditText>
+                    android:textSize="@dimen/textSizeMainYearOfBirthEditText"></EditText>
             </LinearLayout>
         </LinearLayout>
 
@@ -134,7 +134,7 @@
                 android:backgroundTint="@color/Transparent"
                 android:text="@string/saveButtonBT"
                 android:textColor="@color/Orange"
-                android:textSize="@dimen/textSiZeMainButtonText"></Button>
+                android:textSize="@dimen/textSizeMainButtonText"></Button>
         </LinearLayout>
 
     </LinearLayout>
