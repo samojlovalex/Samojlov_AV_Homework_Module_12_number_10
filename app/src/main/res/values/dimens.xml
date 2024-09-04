@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_width">0dp</dimen>
+    <dimen name="padding">8dp</dimen>
+    <dimen name="paddingCircleImageView">10dp</dimen>
+    <dimen name="circleImageViewRadiusMainActivity">250dp</dimen>
+    <dimen name="textMarginTop">8sp</dimen>
+
+    <dimen name="textSiZeMainTV_Name_Surname">30sp</dimen>
+    <dimen name="textSiZeMainYearOfBirth">20sp</dimen>
+    <dimen name="textSiZeMainYearOfBirthEditText">25sp</dimen>
+    <dimen name="textSiZeMainButtonText">40sp</dimen>
+</resources>

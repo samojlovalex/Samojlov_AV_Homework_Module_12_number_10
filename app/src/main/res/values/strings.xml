@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Samojlov_AV_Homework_Module_12_number_10</string>
+    <string name="nameEditTextMainTV_Hint">Имя</string>
+    <string name="surnameEditTextMainTV_Hint">Фамилия</string>
+    <string name="yearOfBirthPhraseTextViewTV">дата рождения</string>
+    <string name="dayMainEditTextET_Hint">ДД</string>
+    <string name="monthMainEditTextET_Hint">ММ</string>
+    <string name="yearMainEditTextET_Hint">ГГГГ</string>
+    <string name="saveButtonBT">Сохранить</string>
+
+    <string name="exit">Exit</string>
+    <string name="toast_exit">Приложение закрыто</string>
+
+    <string name="name_length_limit">Имя должно быть не короче двух букв</string>
+    <string name="surname_length_limit">Фамилия должна быть не короче двух букв</string>
+    <string name="checkDayToInt">Вводите только натуральные числа в поле дня рождения</string>
+    <string name="name_length_limit1">Имя должно быть не короче двух букв</string>
+    <string name="checkYearToInt">Вводите только натуральные числа в поле года рождения</string>
+    <string name="checkMonthToInt">Вводите только натуральные числа в поле месяца рождения</string>
+    <string name="checkFebruaryIsALeapYear">Введдите день рождения в диапазоне [1...28]</string>
+    <string name="checkFebruaryIsNotALeapYear">Введдите день рождения в диапазоне [1...29]</string>
+    <string name="choiceLastYear">Год рождения не может быть позже %1$s года</string>
+    <string name="choiceLastMonth">Месяц рождения не можыть быть поздее %1$s года</string>
+    <string name="choiceLastDay">День рождения не может быть позднее %1$s года</string>
+    <string name="checkALongMonth">Введдите день рождения в диапазоне [1...31]</string>
+    <string name="checkAShortMonth">Введдите день рождения в диапазоне [1...30]</string>
+    <string name="checkMonth">Введите значение месяца года в диапазоне [1...12]</string>
+    <string name="choiceEmpty">Все поля обязательны для ввода</string>
+    <string name="nameAndSurnameTextVieWSecondTW_Hint">Имя и фамилия</string>
+    <string name="birthdayTextVieWSecondTW_Hint">Дата рождения</string>
+    <string name="daysBeforeTheBirthdayTextVieWSecondTW_Hint">Дней до дня рождения</string>
+    <string name="nameAndSurnamePrint_Second">%1$s\n%2$s</string>
+    <string name="birthdayPrint_Second">Дата рождения:\n%1$s года</string>
+    <string name="daysBeforeTheBirthday">До дня рождения осталось дней:\n%1$s !!!</string>
+    <string name="titleToolbarsecond" />
+</resources>

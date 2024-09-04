@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_width"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/paddingCircleImageView"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/photoCircleImageViewMainCIV"
+                android:layout_width="@dimen/circleImageViewRadiusMainActivity"
+                android:layout_height="@dimen/circleImageViewRadiusMainActivity"
+                android:scaleType="centerCrop"
+                android:src="@drawable/empty_photo"></de.hdodenhof.circleimageview.CircleImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/nameEditTextMainET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/nameEditTextMainTV_Hint"
+                android:textColor="@color/Blue"
+                android:textSize="@dimen/textSiZeMainTV_Name_Surname"></EditText>
+
+            <EditText
+                android:id="@+id/surnameEditTextMainET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/textMarginTop"
+                android:gravity="center"
+                android:hint="@string/surnameEditTextMainTV_Hint"
+                android:textColor="@color/Blue"
+                android:textSize="@dimen/textSiZeMainTV_Name_Surname"></EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/yearOfBirthPhraseTextViewTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/yearOfBirthPhraseTextViewTV"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSiZeMainYearOfBirth"
+                android:textStyle="bold"></TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/textMarginTop"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/dayMainEditTextET"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="@string/dayMainEditTextET_Hint"
+                    android:inputType="number"
+                    android:textColor="@color/Blue"
+                    android:textSize="@dimen/textSiZeMainYearOfBirthEditText"></EditText>
+
+                <EditText
+                    android:id="@+id/monthMainEditTextET"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="@string/monthMainEditTextET_Hint"
+                    android:inputType="number"
+                    android:textColor="@color/Blue"
+                    android:textSize="@dimen/textSiZeMainYearOfBirthEditText"></EditText>
+
+                <EditText
+                    android:id="@+id/yearMainEditTextET"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="@string/yearMainEditTextET_Hint"
+                    android:inputType="number"
+                    android:textColor="@color/Blue"
+                    android:textSize="@dimen/textSiZeMainYearOfBirthEditText"></EditText>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/saveButtonBT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/Transparent"
+                android:text="@string/saveButtonBT"
+                android:textColor="@color/Orange"
+                android:textSize="@dimen/textSiZeMainButtonText"></Button>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
