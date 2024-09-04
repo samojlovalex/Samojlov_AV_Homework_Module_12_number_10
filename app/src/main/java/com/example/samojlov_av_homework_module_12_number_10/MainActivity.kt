@@ -127,6 +127,7 @@ class MainActivity : AppCompatActivity() {
 
             Toast.makeText(this, "${person.name} ${person.surname}", Toast.LENGTH_LONG).show()
 
+
             val intent = Intent(this, SecondActivity::class.java)
             intent.putExtra("person", gson)
             startActivity(intent)

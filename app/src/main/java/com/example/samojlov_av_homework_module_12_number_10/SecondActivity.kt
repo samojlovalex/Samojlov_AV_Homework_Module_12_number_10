@@ -104,11 +104,11 @@ class SecondActivity : AppCompatActivity() {
             photoCircleImageViewSecondCIV.setImageBitmap(it)
         }
 
-        photo = currentViewModel.person.image
-        currentViewModel.currentPhotoSecond.value =
-            (photo.also { currentViewModel.photoSecond = it })
-
-        if (currentViewModel.person.image == null) photoCircleImageViewSecondCIV.setImageResource(
+        if (currentViewModel.person.image != null) {
+            photo = currentViewModel.person.image
+            currentViewModel.currentPhotoSecond.value =
+                (photo.also { currentViewModel.photoSecond = it })
+        } else photoCircleImageViewSecondCIV.setImageResource(
             R.drawable.empty_photo
         )
 
