@@ -36,8 +36,13 @@ class MainActivity : AppCompatActivity() {
 
     private val GALLERY_REQUEST = 25
 
-    //    private var photo: Uri? = null
+    private var name: String? = null
+    private var surname: String? = null
+    private var day: String? = null
+    private var month: String? = null
+    private var year: String? = null
     private var photo: Uri? = null
+
     private lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,11 +88,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveCurrentData() {
-        mainViewModel.name = nameEditTextMainET.text.toString()
-        mainViewModel.surname = surnameEditTextMainET.text.toString()
-        mainViewModel.day = dayMainEditTextET.text.toString()
-        mainViewModel.month = monthMainEditTextET.text.toString()
-        mainViewModel.year = yearMainEditTextET.text.toString()
+
+        mainViewModel.currentName.observe(this) {
+            name = it
+        }
+
+        mainViewModel.currentSurname.observe(this) {
+            surname = it
+        }
+
+        mainViewModel.currentDay.observe(this) {
+            day = it
+        }
+
+        mainViewModel.currentMonth.observe(this) {
+            month = it
+        }
+
+        mainViewModel.currentYear.observe(this) {
+            year = it
+        }
 
         mainViewModel.currentPhoto.observe(this) {
             photo = it
@@ -97,27 +117,39 @@ class MainActivity : AppCompatActivity() {
 
     private fun savePerson() {
 
-        saveCurrentData()
-
         val choicePerson = ChoicePerson()
-        val name = mainViewModel.name
-        val surname = mainViewModel.surname
-        val day = mainViewModel.day
-        val month = mainViewModel.month
-        val year = mainViewModel.year
-        val image = mainViewModel.photo
 
-        val choice = choicePerson.choice(this, name, surname, day, month, year)
+        name = nameEditTextMainET.text.toString()
+        mainViewModel.currentName.value =
+            (name.also { mainViewModel.name = it })
+
+        surname = surnameEditTextMainET.text.toString()
+        mainViewModel.currentSurname.value =
+            (surname.also { mainViewModel.surname = it })
+
+        day = dayMainEditTextET.text.toString()
+        mainViewModel.currentDay.value =
+            (day.also { mainViewModel.day = it })
+
+        month = monthMainEditTextET.text.toString()
+        mainViewModel.currentMonth.value =
+            (month.also { mainViewModel.month = it })
+
+        year = yearMainEditTextET.text.toString()
+        mainViewModel.currentYear.value =
+            (year.also { mainViewModel.year = it })
+
+        val choice = choicePerson.choice(this, name!!, surname!!, day!!, month!!, year!!)
 
         if (choice == "0") {
 
             val person = Person()
             person.name = name
             person.surname = surname
-            person.day = day.toInt()
-            person.month = month.toInt()
-            person.year = year.toInt()
-            person.image = image.toString()
+            person.day = day!!.toInt()
+            person.month = month!!.toInt()
+            person.year = year!!.toInt()
+            person.image = photo!!.toString()
 
             val type = typeOf<Person>().javaType
             val gson = Gson().toJson(person, type)

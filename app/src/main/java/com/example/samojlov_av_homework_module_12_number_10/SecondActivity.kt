@@ -28,6 +28,9 @@ class SecondActivity : AppCompatActivity() {
     private lateinit var secondViewModel: SecondViewModel
     private var person: Person? = null
     private var photo: Uri? = null
+    private var nameAndSurname: String? = null
+    private var age: String? = null
+    private var daysBeforeTheBirthday: String? = null
 
     private lateinit var toolbarSecond: androidx.appcompat.widget.Toolbar
     private lateinit var photoCircleImageViewSecondCIV: ImageView
@@ -50,9 +53,9 @@ class SecondActivity : AppCompatActivity() {
 
         init()
 
-        gettingData()
+        saveData()
 
-        currentData()
+        gettingData()
 
         printData()
     }
@@ -73,48 +76,44 @@ class SecondActivity : AppCompatActivity() {
     }
 
     private fun printData() {
-        nameAndSurnameTextVieWSecondTW.text = secondViewModel.nameAndSurname
-        birthdayTextVieWSecondTW.text = secondViewModel.birthday
-        daysBeforeTheBirthdayTextVieWSecondTW.text = secondViewModel.daysBeforeTheBirthday
-    }
 
-    private fun currentData() {
-        secondViewModel.nameAndSurname =
-            getString(
-                R.string.nameAndSurnamePrint_Second,
-                secondViewModel.person.name!!,
-                secondViewModel.person.surname!!
-            )
-
-        val birthdayTime = LocalDate.of(
-            secondViewModel.person.year!!,
-            secondViewModel.person.month!!,
-            secondViewModel.person.day!!
+        nameAndSurname = getString(
+            R.string.nameAndSurnamePrint_Second,
+            person?.name!!,
+            person?.surname!!
         )
 
-        secondViewModel.birthday =
+        val birthdayTime = LocalDate.of(
+            person?.year!!,
+            person?.month!!,
+            person?.day!!
+        )
+
+        age =
             getString(
                 R.string.birthdayPrint_Second,
                 age(birthdayTime)
             )
 
-        secondViewModel.currentPhotoSecond.observe(this) {
-            photo = it
-            photoCircleImageViewSecondCIV.setImageURI(it)
-        }
-
-        if (secondViewModel.person.image != "null") {
-            photo = secondViewModel.person.image!!.toUri()
-            secondViewModel.currentPhotoSecond.value =
-                (photo.also { secondViewModel.person.image = it.toString() })
-        } else photoCircleImageViewSecondCIV.setImageResource(
-            R.drawable.empty_photo
-        )
-
-        secondViewModel.daysBeforeTheBirthday = getString(
+        daysBeforeTheBirthday = getString(
             R.string.daysBeforeTheBirthday,
             daysBeforeTheBirthday(birthdayTime)
         )
+
+        if (person?.image != "null") {
+            photo = person?.image!!.toUri()
+            photoCircleImageViewSecondCIV.setImageURI(photo)
+        } else photoCircleImageViewSecondCIV.setImageResource(R.drawable.empty_photo)
+
+        nameAndSurnameTextVieWSecondTW.text = nameAndSurname
+        birthdayTextVieWSecondTW.text = age
+        daysBeforeTheBirthdayTextVieWSecondTW.text = daysBeforeTheBirthday
+    }
+
+    private fun saveData() {
+        secondViewModel.currentPerson.observe(this) {
+            person = it
+        }
     }
 
     @SuppressLint("StringFormatMatches")
@@ -145,15 +144,15 @@ class SecondActivity : AppCompatActivity() {
         val monthString = getString(R.string.periodMonth, month)
         val yearString = getString(R.string.periodYear, year)
 
-        val periodList = mutableListOf(yearString, monthString, dayString)
+        val periodList = mutableListOf<String>()
         val timeMap = mapOf(
-            day to dayString,
+            year to yearString,
             month to monthString,
-            year to yearString
+            day to dayString
         )
 
         for (i in timeMap) {
-            if (i.key == 0) periodList.remove(i.value)
+            if (i.key != 0) periodList.add(i.value)
         }
 
         val result = periodList.joinToString(separator = " ")
@@ -161,7 +160,7 @@ class SecondActivity : AppCompatActivity() {
     }
 
     @SuppressLint("StringFormatMatches")
-    private fun age(birthday: LocalDate):String {
+    private fun age(birthday: LocalDate): String {
         val thisData = LocalDate.now()
         val period = Period.between(birthday, thisData)
 
@@ -173,15 +172,15 @@ class SecondActivity : AppCompatActivity() {
         val monthString = getString(R.string.periodMonth, month)
         val yearString = getString(R.string.ageYear, year)
 
-        val periodList = mutableListOf(yearString, monthString, dayString)
+        val periodList = mutableListOf<String>()
         val timeMap = mapOf(
-            day to dayString,
+            year to yearString,
             month to monthString,
-            year to yearString
+            day to dayString
         )
 
         for (i in timeMap) {
-            if (i.key == 0) periodList.remove(i.value)
+            if (i.key != 0) periodList.add(i.value)
         }
 
         val result = periodList.joinToString(separator = " ")
@@ -192,8 +191,8 @@ class SecondActivity : AppCompatActivity() {
         val type = typeOf<Person?>().javaType
         val personString: String? = intent.getStringExtra("person")
         person = Gson().fromJson(personString, type)
-
-        secondViewModel.person = person!!
+        secondViewModel.currentPerson.value =
+            (person.also { secondViewModel.person = it })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
