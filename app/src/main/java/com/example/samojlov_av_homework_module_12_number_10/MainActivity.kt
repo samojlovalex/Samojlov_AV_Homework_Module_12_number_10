@@ -149,13 +149,12 @@ class MainActivity : AppCompatActivity() {
             person.day = day!!.toInt()
             person.month = month!!.toInt()
             person.year = year!!.toInt()
-            person.image = photo!!.toString()
+            person.image = photo.toString()
 
             val type = typeOf<Person>().javaType
             val gson = Gson().toJson(person, type)
 
             Toast.makeText(this, "${person.name} ${person.surname}", Toast.LENGTH_LONG).show()
-
 
             val intent = Intent(this, SecondActivity::class.java)
 
