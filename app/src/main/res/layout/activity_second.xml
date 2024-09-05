@@ -70,7 +70,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/textSizeMainTV_Name_Surname"></TextView>
             <TextView
-                android:id="@+id/birthdayTextVieWSecondTW"
+                android:id="@+id/ageTextVieWSecondTW"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

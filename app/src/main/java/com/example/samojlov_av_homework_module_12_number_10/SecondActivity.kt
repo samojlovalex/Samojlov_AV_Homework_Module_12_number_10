@@ -35,7 +35,7 @@ class SecondActivity : AppCompatActivity() {
     private lateinit var toolbarSecond: androidx.appcompat.widget.Toolbar
     private lateinit var photoCircleImageViewSecondCIV: ImageView
     private lateinit var nameAndSurnameTextVieWSecondTW: TextView
-    private lateinit var birthdayTextVieWSecondTW: TextView
+    private lateinit var ageTextVieWSecondTW: TextView
     private lateinit var daysBeforeTheBirthdayTextVieWSecondTW: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,15 +53,17 @@ class SecondActivity : AppCompatActivity() {
 
         init()
 
-        saveData()
-
         gettingData()
+
+        saveData()
 
         printData()
     }
 
-    @SuppressLint("StringFormatMatches")
+    //    @SuppressLint("StringFormatMatches")
     private fun init() {
+        secondViewModel = ViewModelProvider(this)[SecondViewModel::class.java]
+
         toolbarSecond = binding.toolbarSecond
         setSupportActionBar(toolbarSecond)
         title = getString(R.string.titleToolbarsecond)
@@ -69,10 +71,8 @@ class SecondActivity : AppCompatActivity() {
 
         photoCircleImageViewSecondCIV = binding.photoCircleImageViewSecondCIV
         nameAndSurnameTextVieWSecondTW = binding.nameAndSurnameTextVieWSecondTW
-        birthdayTextVieWSecondTW = binding.birthdayTextVieWSecondTW
+        ageTextVieWSecondTW = binding.ageTextVieWSecondTW
         daysBeforeTheBirthdayTextVieWSecondTW = binding.daysBeforeTheBirthdayTextVieWSecondTW
-
-        secondViewModel = ViewModelProvider(this)[SecondViewModel::class.java]
     }
 
     private fun printData() {
@@ -100,13 +100,14 @@ class SecondActivity : AppCompatActivity() {
             daysBeforeTheBirthday(birthdayTime)
         )
 
-        if (person?.image != "null") {
-            photo = person?.image!!.toUri()
+        photo = person?.image!!.toUri()
+
+        if (photo.toString() != "null") {
             photoCircleImageViewSecondCIV.setImageURI(photo)
         } else photoCircleImageViewSecondCIV.setImageResource(R.drawable.empty_photo)
 
         nameAndSurnameTextVieWSecondTW.text = nameAndSurname
-        birthdayTextVieWSecondTW.text = age
+        ageTextVieWSecondTW.text = age
         daysBeforeTheBirthdayTextVieWSecondTW.text = daysBeforeTheBirthday
     }
 
